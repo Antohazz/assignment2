@@ -8,8 +8,6 @@ package com.meritamerica.assignment2;
 
 public class CheckingAccount extends BankAccount{
 
-	private double interestRate = 0.0001; // Interest rate
-	private double balance = 0.0;			  // Current balance
 	
 	
 	//Sets opening balance
