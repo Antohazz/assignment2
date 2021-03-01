@@ -4,6 +4,9 @@ public class CDOffering {
 
 	public CDOffering(int term, double interestRate) {
 		
+		
+		
+		
 	}
 	
 	

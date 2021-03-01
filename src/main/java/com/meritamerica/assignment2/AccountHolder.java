@@ -130,10 +130,10 @@ public class AccountHolder {
 		return checkingAccount;
 	}
 	
-//	protected CheckingAccount[] getCheckingAccounts() {
-//		
-//	}
-//	
+	protected CheckingAccount[] getCheckingAccounts() {
+		return checkingAccountArray;
+	}
+
 	protected int getNumberOfCheckingAccounts() {
 	
 		return checkingAccountArray.length;
@@ -175,10 +175,9 @@ public class AccountHolder {
 	}
 	
 	
-//	protected SavingsAccount[] getSavingsAccounts() {
-//		
-//		
-//	}
+	protected SavingsAccount[] getSavingsAccounts() {
+		return savingsAccountArray;
+	}
 	
 	protected int getNumberOfSavingsAccounts() {
 		
@@ -191,10 +190,27 @@ public class AccountHolder {
 	}
 
 	
+	//CDAccount
 	
 	
 	
 	
+	
+	//Combined balance
+	protected double getCombinedBalance() {
+		double combinedCheckingBalance = 0;
+		for (int i = 0 ; i < getNumberOfCheckingAccounts(); i++) {
+			combinedCheckingBalance += this.checkingAccountArray[i].getBalance();
+		}
+		double combinedSavingsBalance = 0;
+		for (int i = 0 ; i < getNumberOfSavingsAccounts(); i++) {
+			combinedSavingsBalance += this.savingsAccountArray[i].getBalance();
+		}
+		
+		double combinedBalance = combinedCheckingBalance + combinedSavingsBalance;
+		
+		return combinedBalance;
+	}
 
 	// OUTPUT
 	// Outputs account info
@@ -221,4 +237,4 @@ public class AccountHolder {
 //CDAccount[] getCDAccounts()
 //int getNumberOfCDAccounts()
 //double getCDBalance()
-//double getCombinedBalance()
+

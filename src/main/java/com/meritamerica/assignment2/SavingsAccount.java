@@ -5,14 +5,11 @@ package com.meritamerica.assignment2;
  * and set interest rate. 
  */
 
-
-
 public class SavingsAccount extends BankAccount{
 
-
-	
+		
 	//Sets opening balance
-	SavingsAccount(double openingBalance){
+	protected SavingsAccount(double openingBalance){
 		this.balance = openingBalance;
 	}
 

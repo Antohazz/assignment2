@@ -25,29 +25,30 @@ public class MeritBank {
 	
 	protected static AccountHolder[] getAccountHolders() {
 		return AccountArray;
-		
 	}
 	
-	
-	
 	protected static CDOffering[] getCDOfferings() {
-		
 		return CDOfferingArray;
-		
 	}
 	
 	protected static void setCDOfferings(CDOffering[] offerings) {
-		
 		CDOfferingArray = offerings;
 	}
 	
 	
 	protected static void clearCDOfferings() {
-		
 		CDOfferingArray = new CDOffering[5];
-	
 	}
 	
+	
+	protected static double totalBalances() {
+		double totalBalances = 0;
+		
+		for(int i = 0; i < AccountArray.length; i++) {
+			totalBalances += AccountArray[i].getCombinedBalance();
+		}
+		return totalBalances;
+	}
 	
 
 }//class
@@ -63,5 +64,5 @@ public class MeritBank {
 
 
 //static long getNextAccountNumber()
-//static double totalBalances()
+
 //static double futureValue(double presentValue, double interestRate, int term)
