@@ -60,7 +60,7 @@ public class MeritBank {
 //
 //static CDOffering getBestCDOffering(double depositAmount)
 //static CDOffering getSecondBestCDOffering(double depositAmount)
-//static void clearCDOfferings()
+
 
 //static long getNextAccountNumber()
 //static double totalBalances()

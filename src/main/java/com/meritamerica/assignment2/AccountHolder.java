@@ -14,14 +14,21 @@ public class AccountHolder {
 	private String middleName;
 	private String lastName;
 	private String ssn;
+	private CheckingAccount checkingAccount;
+	private SavingsAccount savingsAccount;
+//	private int NumberOfCheckingAccounts;
+//	private int NumberOfSavingsAccounts;
+	private CheckingAccount[] checkingAccountArray = new CheckingAccount[0];
+	private SavingsAccount[] savingsAccountArray = new SavingsAccount[0];
 
-
+	
 	
 	//Constructors
 	
 	public AccountHolder() {
 
 	}
+	
 	
 	public AccountHolder (String firstName, String middleName, String lastName, String ssn) {
 
@@ -77,39 +84,137 @@ public class AccountHolder {
 		return ssn; 
 	}
 	
+	
+	//Accounts getters
+	
+	protected CheckingAccount getCheckingAccount() {
+		return checkingAccount; 
+	}
+		
+	protected SavingsAccount getSavingsAccount() {
+		return savingsAccount; 
+	}
 
+	
 	//ACCOUNTS creation and access
 	
 	//CHECKING
 	
-	private CheckingAccount addCheckingAccount(double openingBalance) {
+	protected CheckingAccount addCheckingAccount(double openingBalance) {
 		
+		this.checkingAccount = new CheckingAccount(openingBalance);
+		
+		CheckingAccount[] tempArr = new CheckingAccount [checkingAccountArray.length + 1];
+		
+		for (int i = 0; i < checkingAccountArray.length; i++) {
+			tempArr[i] = checkingAccountArray[i];
+		}
+		checkingAccountArray = tempArr;
+		
+		return checkingAccount;
 	}
 	
-	private CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
+	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
+		this.checkingAccount = checkingAccount;
 		
+		
+		CheckingAccount[] tempArr = new CheckingAccount [checkingAccountArray.length + 1];
+		
+		for (int i = 0; i < checkingAccountArray.length; i++) {
+			tempArr[i] = checkingAccountArray[i];
+		}
+		checkingAccountArray = tempArr;
+		
+		
+		
+		return checkingAccount;
 	}
 	
-	protected CheckingAccount[] getCheckingAccounts() {
-		
-	}
+//	protected CheckingAccount[] getCheckingAccounts() {
+//		
+//	}
+//	
 	protected int getNumberOfCheckingAccounts() {
+	
+		return checkingAccountArray.length;
 		
 	}
+	
 	protected double getCheckingBalance() {
-		
+		return this.getCheckingBalance();
 	}
 
+	
+	
+	//SAVINGS
+	
+	protected SavingsAccount addSavingsAccount(double openingBalance) {
+		this.savingsAccount = new SavingsAccount(openingBalance);
+		
+		SavingsAccount[] tempArr = new SavingsAccount [savingsAccountArray.length + 1];
+		
+		for (int i = 0; i < savingsAccountArray.length; i++) {
+			tempArr[i] = savingsAccountArray[i];
+		}
+		savingsAccountArray = tempArr;
+		
+		return savingsAccount;
+	}
+	
+	protected SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
+		this.savingsAccount = savingsAccount;
+		
+		SavingsAccount[] tempArr = new SavingsAccount [savingsAccountArray.length + 1];
+		
+		for (int i = 0; i < savingsAccountArray.length; i++) {
+			tempArr[i] = savingsAccountArray[i];
+		}
+		savingsAccountArray = tempArr;
+		
+		return savingsAccount;
+	}
+	
+	
+//	protected SavingsAccount[] getSavingsAccounts() {
+//		
+//		
+//	}
+	
+	protected int getNumberOfSavingsAccounts() {
+		
+		return savingsAccountArray.length;
+		
+	}
+	
+	protected double getSavingsBalance() {
+		return this.getSavingsBalance();
+	}
+
+	
+	
+	
+	
+	
+
+	// OUTPUT
+	// Outputs account info
+	public String toString() {
+		String accountInfo = "Name: " + getFirstName() + " " + getMiddleName() + " " + getLastName() + "/n" +
+				"SSN: " + getSSN() + "/n" +
+				"Checking Account Balance: $" + getCheckingAccount().getBalance() + "/n"+
+				"Checking Account Interest Rate: " + getCheckingAccount().getInterestRate() +"/n"+
+				"Checking Account Balance in 3 years: $" + "/n" +
+				"Savings Account Balance: $" + getSavingsAccount().getBalance() + "/n" +
+				"Savings Account Interest Rate: " + getSavingsAccount().getInterestRate()+ "/n" +
+				"Savings Account Balance in 3 years: $";
+		return accountInfo;	
+		}
 	
 }//class
 
 
 
-//SavingsAccount addSavingsAccount(double openingBalance)
-//SavingsAccount addSavingsAccount(SavingsAccount savingsAccount)
-//SavingsAccount[] getSavingsAccounts()
-//int getNumberOfSavingsAccounts()
-//double getSavingsBalance()
+
 
 //CDAccount addCDAccount(CDOffering offering, double openingBalance)
 //CDAccount addCDAccount(CDAccount cdAccount)
