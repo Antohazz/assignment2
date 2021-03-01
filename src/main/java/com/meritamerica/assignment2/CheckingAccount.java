@@ -17,15 +17,6 @@ public class CheckingAccount extends BankAccount{
 		this.balance = openingBalance;
 	}
 	
-	//Balance getter
-	protected double getBalance() {
-		return balance;
-	}
-	
-	//Interest getter
-	protected double getInterestRate() {
-		return interestRate;
-	}
 	
 	
 	

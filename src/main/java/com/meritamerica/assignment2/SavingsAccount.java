@@ -19,17 +19,7 @@ public class SavingsAccount extends BankAccount{
 	protected SavingsAccount(double openingBalance){
 		this.balance = openingBalance;
 	}
-	
-	//Balance getter
-	protected double getBalance() {
-		return balance;
-	}
-	
-	//Interest getter
-	protected double getInterestRate() {
-		return interestRate;
-	}
-	
+
 
 	// Outputs account info
 	public String toString() {
