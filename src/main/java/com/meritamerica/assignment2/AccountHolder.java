@@ -2,9 +2,6 @@ package com.meritamerica.assignment2;
 
 import java.util.Arrays;
 
-import com.meritamerica.assignment1.CheckingAccount;
-import com.meritamerica.assignment1.SavingsAccount;
-
 /* AccountHolder class for MeritAmericaBankApp.
  * Allows to create new account account.
  * Provides getter and setter methods to access account's properties.
@@ -17,8 +14,7 @@ public class AccountHolder {
 	private String middleName;
 	private String lastName;
 	private String ssn;
-	private CheckingAccount checkingAccount;
-	private SavingsAccount savingsAccount;
+
 
 	
 	//Constructors
@@ -106,8 +102,6 @@ public class AccountHolder {
 
 	
 }//class
-
-
 
 
 
