@@ -16,10 +16,12 @@ public class AccountHolder {
 	private String ssn;
 	private CheckingAccount checkingAccount;
 	private SavingsAccount savingsAccount;
+	private CDAccount cdAccount;
 //	private int NumberOfCheckingAccounts;
 //	private int NumberOfSavingsAccounts;
 	private CheckingAccount[] checkingAccountArray = new CheckingAccount[0];
 	private SavingsAccount[] savingsAccountArray = new SavingsAccount[0];
+	private CDAccount[] cdAccountArray = new CDAccount[0];
 
 	
 	
@@ -192,7 +194,47 @@ public class AccountHolder {
 	
 	//CDAccount
 	
+	protected CDAccount addCDAccount(CDOffering offering, double openingBalance) {
+		this.cdAccount = new CDAccount(offering, openingBalance);
+		
+		CDAccount[] tempArr = new CDAccount [cdAccountArray.length + 1];
+		
+		for (int i = 0; i < cdAccountArray.length; i++) {
+			tempArr[i] = cdAccountArray[i];
+		}
+		cdAccountArray = tempArr;
+		
+		return cdAccount;
+	}
+
+	protected CDAccount addCDAccount(CDAccount cdAccount) {
+		this.cdAccount = cdAccount;
+		
+		CDAccount[] tempArr = new CDAccount [cdAccountArray.length + 1];
+		
+		for (int i = 0; i < cdAccountArray.length; i++) {
+			tempArr[i] = cdAccountArray[i];
+		}
+		cdAccountArray = tempArr;
+		
+		return cdAccount;
+	}
 	
+	
+	protected CDAccount[] getCDAccounts() {
+		return cdAccountArray;
+	}
+
+	protected int getNumberOfCDAccounts() {
+		
+		return cdAccountArray.length;
+		
+	}
+	
+	protected double getCDBalance() {
+		return this.getCDBalance();
+	}
+
 	
 	
 	
@@ -232,9 +274,5 @@ public class AccountHolder {
 
 
 
-//CDAccount addCDAccount(CDOffering offering, double openingBalance)
-//CDAccount addCDAccount(CDAccount cdAccount)
-//CDAccount[] getCDAccounts()
-//int getNumberOfCDAccounts()
-//double getCDBalance()
+
 

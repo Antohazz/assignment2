@@ -7,12 +7,17 @@ package com.meritamerica.assignment2;
 
 public class SavingsAccount extends BankAccount{
 
+	private final double INTEREST_RATE = 0.01;
 		
 	//Sets opening balance
 	protected SavingsAccount(double openingBalance){
 		this.balance = openingBalance;
 	}
-
+	
+	//Interest getter
+	protected double getInterestRate() {
+		return INTEREST_RATE;
+	}
 
 	// Outputs account info
 	public String toString() {

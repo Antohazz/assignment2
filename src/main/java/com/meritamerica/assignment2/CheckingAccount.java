@@ -7,14 +7,18 @@ package com.meritamerica.assignment2;
 
 
 public class CheckingAccount extends BankAccount{
-
+	
+	private final double INTEREST_RATE = 0.0001;
 	
 	//Sets opening balance
 	CheckingAccount(double openingBalance){
 		this.balance = openingBalance;
 	}
 	
-	
+	//Interest getter
+	protected double getInterestRate() {
+		return INTEREST_RATE;
+	}
 	
 	
 	// Outputs account info
