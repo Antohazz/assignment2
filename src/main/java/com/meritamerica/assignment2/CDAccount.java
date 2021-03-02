@@ -4,19 +4,33 @@ import java.util.Date;
 
 public class CDAccount extends BankAccount{
 	
-	
+	private int term = 0;
+	private Date startDate;
 	
 	//Sets opening balance
 	CDAccount(CDOffering offering, double openingBalance){
 		this.offering = offering;
 		this.balance = openingBalance;
+		this.startDate = getStartDate();
 		
 	}
 	
-	int getTerm() {
+	protected Date getStartDate() {
+	
+		Date date = new java.util.Date();
 		
+		return date;
 	}
 	
+	
+	protected int getTerm() {
+		return term;
+	}
+	
+	protected double futureValue() {
+		double futureBalance = balance * Math.pow(1 + getInterestRate(), getTerm());
+		return futureBalance;
+	}
 	
 	
 	// Outputs account info
@@ -33,9 +47,4 @@ public class CDAccount extends BankAccount{
 
 
 
-//double getBalance()
-//double getInterestRate()
 
-//java.util.Date getStartDate()
-//long getAccountNumber()
-//double futureValue()

@@ -17,8 +17,7 @@ public class AccountHolder {
 	private CheckingAccount checkingAccount;
 	private SavingsAccount savingsAccount;
 	private CDAccount cdAccount;
-//	private int NumberOfCheckingAccounts;
-//	private int NumberOfSavingsAccounts;
+
 	private CheckingAccount[] checkingAccountArray = new CheckingAccount[0];
 	private SavingsAccount[] savingsAccountArray = new SavingsAccount[0];
 	private CDAccount[] cdAccountArray = new CDAccount[0];
@@ -104,6 +103,8 @@ public class AccountHolder {
 	
 	protected CheckingAccount addCheckingAccount(double openingBalance) {
 		
+		if (getCombinedBalance() >= 250000) {
+		
 		this.checkingAccount = new CheckingAccount(openingBalance);
 		
 		CheckingAccount[] tempArr = new CheckingAccount [checkingAccountArray.length + 1];
@@ -113,10 +114,15 @@ public class AccountHolder {
 		}
 		checkingAccountArray = tempArr;
 		
+		}else {
+			System.out.println("Cannot open. Total is > 250000");
+		}
 		return checkingAccount;
 	}
 	
 	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
+		if (getCombinedBalance() >= 250000) {
+		
 		this.checkingAccount = checkingAccount;
 		
 		
@@ -127,8 +133,10 @@ public class AccountHolder {
 		}
 		checkingAccountArray = tempArr;
 		
-		
-		
+	
+		}else {
+			System.out.println("Cannot open. Total is > 250000");
+		}
 		return checkingAccount;
 	}
 	
@@ -151,6 +159,8 @@ public class AccountHolder {
 	//SAVINGS
 	
 	protected SavingsAccount addSavingsAccount(double openingBalance) {
+		if (getCombinedBalance() >= 250000) {
+		
 		this.savingsAccount = new SavingsAccount(openingBalance);
 		
 		SavingsAccount[] tempArr = new SavingsAccount [savingsAccountArray.length + 1];
@@ -160,10 +170,15 @@ public class AccountHolder {
 		}
 		savingsAccountArray = tempArr;
 		
+		}else {
+			System.out.println("Cannot open. Total is > 250000");
+		}
 		return savingsAccount;
 	}
 	
 	protected SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
+		if (getCombinedBalance() >= 250000) {
+		
 		this.savingsAccount = savingsAccount;
 		
 		SavingsAccount[] tempArr = new SavingsAccount [savingsAccountArray.length + 1];
@@ -173,6 +188,10 @@ public class AccountHolder {
 		}
 		savingsAccountArray = tempArr;
 		
+		
+		}else {
+			System.out.println("Cannot open. Total is > 250000");
+		}
 		return savingsAccount;
 	}
 	

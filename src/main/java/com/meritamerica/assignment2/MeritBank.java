@@ -6,6 +6,7 @@ import java.util.Random;
 public class MeritBank {
 	
 	/*classvars*/
+	protected static int accountNumberCounter = 0;
 	private static AccountHolder[] AccountArray = new AccountHolder[0];
 	private static CDOffering[] CDOfferingArray = new CDOffering[5];
 	
@@ -23,20 +24,20 @@ public class MeritBank {
 
 	
 	
-	protected static AccountHolder[] getAccountHolders() {
+	public static AccountHolder[] getAccountHolders() {
 		return AccountArray;
 	}
 	
-	protected static CDOffering[] getCDOfferings() {
+	public static CDOffering[] getCDOfferings() {
 		return CDOfferingArray;
 	}
 	
-	protected static void setCDOfferings(CDOffering[] offerings) {
+	public static void setCDOfferings(CDOffering[] offerings) {
 		CDOfferingArray = offerings;
 	}
 	
 	
-	protected static void clearCDOfferings() {
+	public static void clearCDOfferings() {
 		CDOfferingArray = new CDOffering[5];
 	}
 	
@@ -50,19 +51,35 @@ public class MeritBank {
 		return totalBalances;
 	}
 	
+	protected static long getNextAccountNumber() {
+		
+		return accountNumberCounter + 1;
+	}
+	
+	
+	public static CDOffering getBestCDOffering(double depositAmount) {
+
+		
+		return getCDOfferings()[5];
+	}
+	
+	public static CDOffering getSecondBestCDOffering(double depositAmount) {
+		
+		return getCDOfferings()[4];
+	}
+
+	public static double futureValue(double presentValue, double interestRate, int term) {
+
+		double futureValue = presentValue * Math.pow(1 + interestRate, term);
+		
+		return futureValue;
+	}
+	
+	
+	
 
 }//class
 
 
-
-
-
-
 //
-//static CDOffering getBestCDOffering(double depositAmount)
-//static CDOffering getSecondBestCDOffering(double depositAmount)
 
-
-//static long getNextAccountNumber()
-
-//static double futureValue(double presentValue, double interestRate, int term)
