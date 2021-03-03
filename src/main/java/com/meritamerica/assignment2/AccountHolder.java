@@ -37,7 +37,8 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		
+
+
 	}
 		
 	
@@ -103,7 +104,7 @@ public class AccountHolder {
 	
 	protected CheckingAccount addCheckingAccount(double openingBalance) {
 		
-		if (getCombinedBalance() >= 250000) {
+		if (getCombinedBalance() < 250000) {
 		
 		this.checkingAccount = new CheckingAccount(openingBalance);
 		
@@ -120,26 +121,7 @@ public class AccountHolder {
 		return checkingAccount;
 	}
 	
-	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		if (getCombinedBalance() >= 250000) {
 		
-		this.checkingAccount = checkingAccount;
-		
-		
-		CheckingAccount[] tempArr = new CheckingAccount [checkingAccountArray.length + 1];
-		
-		for (int i = 0; i < checkingAccountArray.length; i++) {
-			tempArr[i] = checkingAccountArray[i];
-		}
-		checkingAccountArray = tempArr;
-		
-	
-		}else {
-			System.out.println("Cannot open. Total is > 250000");
-		}
-		return checkingAccount;
-	}
-	
 	protected CheckingAccount[] getCheckingAccounts() {
 		return checkingAccountArray;
 	}
@@ -151,7 +133,8 @@ public class AccountHolder {
 	}
 	
 	protected double getCheckingBalance() {
-		return this.getCheckingBalance();
+		
+		return checkingAccount.getBalance();
 	}
 
 	
@@ -159,7 +142,7 @@ public class AccountHolder {
 	//SAVINGS
 	
 	protected SavingsAccount addSavingsAccount(double openingBalance) {
-		if (getCombinedBalance() >= 250000) {
+		if (getCombinedBalance() < 250000) {
 		
 		this.savingsAccount = new SavingsAccount(openingBalance);
 		
@@ -176,24 +159,7 @@ public class AccountHolder {
 		return savingsAccount;
 	}
 	
-	protected SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		if (getCombinedBalance() >= 250000) {
-		
-		this.savingsAccount = savingsAccount;
-		
-		SavingsAccount[] tempArr = new SavingsAccount [savingsAccountArray.length + 1];
-		
-		for (int i = 0; i < savingsAccountArray.length; i++) {
-			tempArr[i] = savingsAccountArray[i];
-		}
-		savingsAccountArray = tempArr;
-		
-		
-		}else {
-			System.out.println("Cannot open. Total is > 250000");
-		}
-		return savingsAccount;
-	}
+	
 	
 	
 	protected SavingsAccount[] getSavingsAccounts() {
@@ -207,7 +173,7 @@ public class AccountHolder {
 	}
 	
 	protected double getSavingsBalance() {
-		return this.getSavingsBalance();
+		return savingsAccount.getBalance();
 	}
 
 	
@@ -226,18 +192,7 @@ public class AccountHolder {
 		return cdAccount;
 	}
 
-	protected CDAccount addCDAccount(CDAccount cdAccount) {
-		this.cdAccount = cdAccount;
-		
-		CDAccount[] tempArr = new CDAccount [cdAccountArray.length + 1];
-		
-		for (int i = 0; i < cdAccountArray.length; i++) {
-			tempArr[i] = cdAccountArray[i];
-		}
-		cdAccountArray = tempArr;
-		
-		return cdAccount;
-	}
+
 	
 	
 	protected CDAccount[] getCDAccounts() {
@@ -260,13 +215,15 @@ public class AccountHolder {
 	//Combined balance
 	protected double getCombinedBalance() {
 		double combinedCheckingBalance = 0;
+		if (getNumberOfCheckingAccounts() != 0) {
 		for (int i = 0 ; i < getNumberOfCheckingAccounts(); i++) {
 			combinedCheckingBalance += this.checkingAccountArray[i].getBalance();
-		}
+		}}
 		double combinedSavingsBalance = 0;
+		if (getNumberOfSavingsAccounts()!= 0) {
 		for (int i = 0 ; i < getNumberOfSavingsAccounts(); i++) {
 			combinedSavingsBalance += this.savingsAccountArray[i].getBalance();
-		}
+		}}
 		
 		double combinedBalance = combinedCheckingBalance + combinedSavingsBalance;
 		
@@ -275,17 +232,17 @@ public class AccountHolder {
 
 	// OUTPUT
 	// Outputs account info
-	public String toString() {
-		String accountInfo = "Name: " + getFirstName() + " " + getMiddleName() + " " + getLastName() + "/n" +
-				"SSN: " + getSSN() + "/n" +
-				"Checking Account Balance: $" + getCheckingAccount().getBalance() + "/n"+
-				"Checking Account Interest Rate: " + getCheckingAccount().getInterestRate() +"/n"+
-				"Checking Account Balance in 3 years: $" + "/n" +
-				"Savings Account Balance: $" + getSavingsAccount().getBalance() + "/n" +
-				"Savings Account Interest Rate: " + getSavingsAccount().getInterestRate()+ "/n" +
-				"Savings Account Balance in 3 years: $";
-		return accountInfo;	
-		}
+//	public String toString() {
+//		String accountInfo = "Name: " + getFirstName() + " " + getMiddleName() + " " + getLastName() + "/n" +
+//				"SSN: " + getSSN() + "/n" +
+//				"Checking Account Balance: $" + getCheckingAccount().getBalance() + "/n"+
+//				"Checking Account Interest Rate: " + getCheckingAccount().getInterestRate() +"/n"+
+//				"Checking Account Balance in 3 years: $" + "/n" +
+//				"Savings Account Balance: $" + getSavingsAccount().getBalance() + "/n" +
+//				"Savings Account Interest Rate: " + getSavingsAccount().getInterestRate()+ "/n" +
+//				"Savings Account Balance in 3 years: $";
+//		return accountInfo;	
+//		}
 	
 }//class
 

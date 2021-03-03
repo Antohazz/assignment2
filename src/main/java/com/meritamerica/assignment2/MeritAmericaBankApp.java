@@ -6,11 +6,11 @@ public class MeritAmericaBankApp {
 		System.out.println("Hello Merit America!");
 		
 		
-    	CDOffering of1 = new CDOffering(1,1.8/100);
-    	CDOffering of2 = new CDOffering(2,1.9/100);
-    	CDOffering of3 = new CDOffering(3,2.0/100);
-    	CDOffering of4 = new CDOffering(5,2.5/100);
-    	CDOffering of5 = new CDOffering(10,2.2/100);
+    	new CDOffering(1,0.018);
+    	new CDOffering(2,0.019);
+    	new CDOffering(3,0.020);
+    	new CDOffering(5,0.025);
+    	new CDOffering(10,0.022);
 		
 		
 		/* Instantiates an account holder

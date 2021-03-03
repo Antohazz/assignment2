@@ -4,15 +4,24 @@ public class CDOffering {
 	
 	private int term;
 	private double interestRate;
-	public CDOffering[] cdOfferingArray = new CDOffering[5];
+	public CDOffering[] cdOfferingArray = new CDOffering[0];
 		
+	public CDOffering() {
+		
+	}
 	
 	public CDOffering(int term, double interestRate) {
+			
+		CDOffering[] tempArr = new CDOffering [cdOfferingArray.length + 1];
 		
-		int i = cdOfferingArray.length - 1;
+		for (int i = 0; i < cdOfferingArray.length; i++) {
+			tempArr[i] = cdOfferingArray[i];
+		}
+		cdOfferingArray = tempArr;
+		int j = cdOfferingArray.length - 1;
 		
-		cdOfferingArray[i].term = term;
-		cdOfferingArray[i].interestRate = interestRate;
+		cdOfferingArray[j].term = term;
+		cdOfferingArray[j].interestRate = interestRate;
 			
 		
 	}
