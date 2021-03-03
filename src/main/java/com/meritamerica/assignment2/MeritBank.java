@@ -23,7 +23,7 @@ public class MeritBank {
 		return accountHolders;
 	}
 	
-	static CDOffering[] getcdOfferings() {
+	static CDOffering[] getCDOfferings() {
 		return cdOfferings;
 	}
 
@@ -71,11 +71,14 @@ public class MeritBank {
 		return cdOfferings[j];
 	}
 	
-	static void clearcdOfferings() {
+	static void clearCDOfferings() {
+//		for (int i = 0; i < cdOfferings.length; i++) {
+//			cdOfferings[i] = null;	
+//		}
 		cdOfferings = null;
 	}
 	
-	static void setcdOfferings(CDOffering[] offerings) {
+	static void setCDOfferings(CDOffering[] offerings) {
 		cdOfferings = offerings;
 	}
 	

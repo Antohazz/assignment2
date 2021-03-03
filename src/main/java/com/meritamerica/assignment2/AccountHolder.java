@@ -7,31 +7,6 @@ import java.util.Arrays;
  * Provides getter and setter methods to access account's properties.
  */
 
-//AccountHolder(String firstName, String middleName, String lastName, String ssn)
-//String getFirstName()
-//void setFirstName()
-//String getMiddleName()
-//void setMiddleName()
-//String getLastName()
-//void setLastName()
-//String getSSN()
-//void setSSN()
-//CheckingAccount addCheckingAccount(double openingBalance)
-//CheckingAccount addCheckingAccount(CheckingAccount checkingAccount)
-//CheckingAccount[] getCheckingAccounts()
-//int getNumberOfCheckingAccounts()
-//double getCheckingBalance()
-//SavingsAccount addSavingsAccount(double openingBalance)
-//SavingsAccount addSavingsAccount(SavingsAccount savingsAccount)
-//SavingsAccount[] getSavingsAccounts()
-//int getNumberOfSavingsAccounts()
-//double getSavingsBalance()
-//CDAccount addCDAccount(CDOffering offering, double openingBalance)
-//CDAccount addCDAccount(CDAccount cdAccount)
-//CDAccount[] getCDAccounts()
-//int getNumberOfCDAccounts()
-//double getCDBalance()
-//double getCombinedBalance()
 
 public class AccountHolder {
 	
@@ -41,7 +16,9 @@ public class AccountHolder {
 	private String ssn;
 	private CheckingAccount checkingAccount;
 	private SavingsAccount savingsAccount;
-
+	private CheckingAccount[] checkArray = new CheckingAccount[0];
+	private SavingsAccount[] saveArray = new SavingsAccount[0];
+	private CDAccount[] cdArray = new CDAccount[0]; 
 	
 	//Constructors
 	
@@ -49,8 +26,16 @@ public class AccountHolder {
 
 	}
 	
-	public AccountHolder (String firstName, String middleName, String lastName, String ssn,
-						double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
+	public AccountHolder(String firstName, String middleName, String lastName, String ssn) {
+
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.ssn = ssn;
+	}
+	
+	public AccountHolder(String firstName, String middleName, String lastName, String ssn,
+			double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
 
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -58,9 +43,10 @@ public class AccountHolder {
 		this.ssn = ssn;
 		checkingAccount = new CheckingAccount(checkingAccountOpeningBalance);
 		savingsAccount = new SavingsAccount(savingsAccountOpeningBalance);
-		
+
 	}
-		
+
+
 	
 	//Account GETTERS and SETTERS
 	
@@ -116,6 +102,120 @@ public class AccountHolder {
 	protected SavingsAccount getSavingsAccount() {
 		return savingsAccount; 
 	}
+	
+	
+	
+	
+	protected CheckingAccount addCheckingAccount(double openingBalance) {
+		CheckingAccount checkingAccount = new CheckingAccount(openingBalance);
+		return checkingAccount;
+	}
+
+	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
+		CheckingAccount[] temp = new CheckingAccount[checkArray.length + 1];
+		for (int i = 0; i < checkArray.length; i++) {
+			temp[i] = checkArray[i];
+		}
+		checkArray = temp;		
+		checkArray[checkArray.length - 1] = checkingAccount;
+	
+		return checkArray[checkArray.length - 1];
+	}
+	
+	protected CheckingAccount[] getCheckingAccounts() {
+		return checkArray;		
+	}
+	
+	protected int getNumberOfCheckingAccounts() {
+		return checkArray.length;
+	}
+	
+	protected double getCheckingBalance() {
+		double chBalance = 0.0;
+		for (int i = 0; i < checkArray.length; i++) {
+			chBalance += checkArray[i].getBalance();
+		}
+		return chBalance;
+	}
+	
+	
+	
+	
+	
+	
+	protected SavingsAccount addSavingsAccount(double openingBalance) {
+		SavingsAccount savingsAccount = new SavingsAccount(openingBalance);
+		return savingsAccount;
+	}
+
+	protected SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
+		SavingsAccount[] temp = new SavingsAccount[saveArray.length + 1];
+		for (int i = 0; i < saveArray.length; i++) {
+			temp[i] = saveArray[i];
+		}
+		saveArray = temp;		
+		saveArray[saveArray.length - 1] = savingsAccount;
+	
+		return saveArray[saveArray.length - 1];
+	}
+	
+	protected SavingsAccount[] getSavingsAccounts() {
+		return saveArray;		
+	}
+	
+	protected int getNumberOfSavingsAccounts() {
+		return saveArray.length;
+	}
+	
+	protected double getSavingsBalance() {
+		double svBalance = 0.0;
+		for (int i = 0; i < saveArray.length; i++) {
+			svBalance += saveArray[i].getBalance();
+		}
+		return svBalance;
+	}
+	
+	
+	
+	
+	protected CDAccount addCDAccount(CDOffering offering, double openingBalance) {
+		CDAccount cdAccount = new CDAccount(offering, openingBalance);
+		return cdAccount;
+	}
+
+	protected CDAccount addCDAccount(CDAccount cdAccount) {
+		CDAccount[] temp = new CDAccount[cdArray.length + 1];
+		for (int i = 0; i < cdArray.length; i++) {
+			temp[i] = cdArray[i];
+		}
+		cdArray = temp;		
+		cdArray[cdArray.length - 1] = cdAccount;
+	
+		return cdArray[cdArray.length - 1];
+	}
+	
+	protected CDAccount[] getCDAccounts() {
+		return cdArray;		
+	}
+	
+	protected int getNumberOfCDAccounts() {
+		return cdArray.length;
+	}
+	
+	protected double getCDBalance() {
+		double cdBalance = 0.0;
+		for (int i = 0; i < cdArray.length; i++) {
+			cdBalance += cdArray[i].getBalance();
+		}
+		return cdBalance;
+	}
+	
+
+	
+	protected double getCombinedBalance() {
+		return getCDBalance() + getSavingsBalance() + getCheckingBalance();
+	}
+	
 	
 
 	// OUTPUT
