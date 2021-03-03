@@ -3,9 +3,10 @@ package com.meritamerica.assignment2;
 import java.util.Date;
 
 public class CDAccount extends BankAccount{
-	
+	private CDOffering offering;
 	private int term = 0;
 	private Date startDate;
+	private double balance;
 	
 	//Sets opening balance
 	CDAccount(CDOffering offering, double openingBalance){
