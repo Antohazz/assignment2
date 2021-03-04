@@ -226,7 +226,7 @@ public class AccountHolder {
 	}
 
 	protected double getCombinedBalance() {
-		return getCDBalance() + getSavingsBalance() + getCheckingBalance();
+		return /*getCDBalance() +*/ getSavingsBalance() + getCheckingBalance();
 	}
 
 	// OUTPUT
