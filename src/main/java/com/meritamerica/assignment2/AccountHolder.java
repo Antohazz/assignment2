@@ -139,11 +139,13 @@ public class AccountHolder {
 	}
 
 	protected double getCheckingBalance() {
+		if(checkArray != null) {
 		double chBalance = 0.0;
 		for (int i = 0; i < checkArray.length; i++) {
 			chBalance += checkArray[i].getBalance();
 		}
 		return chBalance;
+		}else return 0;
 	}
 
 	protected SavingsAccount addSavingsAccount(double openingBalance) {
@@ -184,11 +186,13 @@ public class AccountHolder {
 	}
 
 	protected double getSavingsBalance() {
+		if (saveArray != null) {
 		double svBalance = 0.0;
 		for (int i = 0; i < saveArray.length; i++) {
 			svBalance += saveArray[i].getBalance();
 		}
 		return svBalance;
+		}else return 0;
 	}
 
 	protected CDAccount addCDAccount(CDOffering offering, double openingBalance) {

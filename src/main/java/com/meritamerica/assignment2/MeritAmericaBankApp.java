@@ -5,11 +5,13 @@ public class MeritAmericaBankApp {
 		System.out.println("Hello Merit America!");
 		
 		
-		new CDOffering(1,0.018);
-    	new CDOffering(2,0.019);
-    	new CDOffering(3,0.020);
-    	new CDOffering(5,0.025);
-    	new CDOffering(10,0.022);
+    	CDOffering[] CDOfferings = new CDOffering[5];
+    	
+    	CDOfferings[0] = new CDOffering(1,1.8/100);
+    	CDOfferings[1] = new CDOffering(2,1.9/100);
+    	CDOfferings[2] = new CDOffering(3,2.0/100);
+    	CDOfferings[3] = new CDOffering(5,2.5/100);
+    	CDOfferings[4] = new CDOffering(10,2.2/100);
 		
 		
 		/* Instantiates an account holder
@@ -26,13 +28,17 @@ public class MeritAmericaBankApp {
 		ah1.addCheckingAccount(5000);
 		ah1.addSavingsAccount(50000);
 		
+        for (int i  = 0; i < CDOfferings.length; i++) {
+        	System.out.println(CDOfferings[i].getInterestRate());
+        	System.out.println(CDOfferings[i].getTerm());
+        }
 		
 		System.out.println(ah1.getNumberOfCheckingAccounts());
 		System.out.println(ah1.getNumberOfSavingsAccounts());
 		System.out.println(ah1.getCheckingBalance());
 		System.out.println(ah1.getSavingsBalance());
 		System.out.println(ah1.getCombinedBalance());
-		
+			
 		//Add the best CD offering as a CD account on ah1
 		MeritBank.getBestCDOffering(ah1.getCombinedBalance());
 		

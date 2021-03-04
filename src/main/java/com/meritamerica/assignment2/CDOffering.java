@@ -12,6 +12,7 @@ public class CDOffering{
 		this.balance = 0;
 	}
 	
+	
 	public int getTerm() {
 		return term;
 	}

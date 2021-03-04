@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class MeritBank {
 	
-	private static long accountNumber = 0;
-	private static AccountHolder[] accountHolders = new AccountHolder[0];
-	private static CDOffering[] cdOfferings = new CDOffering[5];
-	private static CDOffering offering;
+	public static long accountNumber = 0;
+	public static AccountHolder[] accountHolders = new AccountHolder[0];
+	public static CDOffering[] cdOfferings = new CDOffering[0];
+	public static CDOffering offering;
 	
 	public static void addAccountHolder(AccountHolder accountHolder) {
 		AccountHolder[] temp = new AccountHolder[accountHolders.length + 1];
@@ -29,25 +29,31 @@ public class MeritBank {
 
 
 	public static CDOffering getBestCDOffering(double depositAmount) {
+		if (cdOfferings != null) {
 		double val = 0.0;
 		int j = 0;
 		for (int i = 0; i < cdOfferings.length; i++) {
-			if(futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm()) > val) {
-				val = futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm());
+			if((double)futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm()) > val) {
+				val = (double)futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm());
 				j = i;
 			}
 		
 		}
+//		CDOffering offering = new CDOffering(cdOfferings[j].getTerm(), cdOfferings[j].getInterestRate());
+//		System.out.println("Got here");
+//		return offering;
 		return cdOfferings[j];
+		}else return null;
 	}
 
 	public static CDOffering getSecondBestCDOffering(double depositAmount) {
+		if (cdOfferings != null) {
 		double val = 0.0;
 		int j = 0;
 		int k = 0;
 		for (int i = 0; i < cdOfferings.length; i++) {
-			if(futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm()) > val) {
-				val = futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm());
+			if((double)futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm()) > val) {
+				val = (double)futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm());
 				j = i;
 				k = j;
 			}
@@ -55,6 +61,7 @@ public class MeritBank {
 		}
 		
 		return cdOfferings[k];
+		}else return null;
 	}
 	
 	public static void clearCDOfferings() {
@@ -65,6 +72,7 @@ public class MeritBank {
 	}
 	
 	public static void setCDOfferings(CDOffering[] offerings) {
+		
 		cdOfferings = offerings;
 	}
 	
