@@ -51,8 +51,8 @@ public class MeritAmericaBankApp {
 		AccountHolder ah2 = new AccountHolder("Major", "Major", "Major", "777-77-7777");
 		
 		//Add a checking account with an opening balance of $1,000 as well as a savings account with an opening balance of $10,000 to ah2
-		ah1.addCheckingAccount(1000);
-		ah1.addSavingsAccount(10000);
+		ah2.addCheckingAccount(1000);
+		ah2.addSavingsAccount(10000);
 		
 		//Add the second best CD offering as a CD account on ah2
 		MeritBank.getSecondBestCDOffering(ah2.getCombinedBalance());
