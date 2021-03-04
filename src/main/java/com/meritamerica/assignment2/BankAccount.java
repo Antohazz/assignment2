@@ -13,22 +13,26 @@ public class BankAccount {
 	
 	public BankAccount(double balance) {
 		this.balance = balance;
+		this.accountNumber = MeritBank.getNextAccountNumber();
 	}
 	
 	public BankAccount(CDOffering offering, double balance) {
 		this.offering = offering;
 		this.balance = balance;
+		this.accountNumber = MeritBank.getNextAccountNumber();
 	}
 	
 	public BankAccount(double balance, double interestRate) {
 		this.balance = balance;
 		this.interestRate = interestRate;
+		this.accountNumber = MeritBank.getNextAccountNumber();
 	}
 	
 	public BankAccount(long accountNumber, double balance, double interestRate) {
 		this.accountNumber = accountNumber;
 		this.balance = balance;
 		this.interestRate = interestRate;
+		this.accountNumber = MeritBank.getNextAccountNumber();
 	}
 	
 	public long getAccountNumber() {
