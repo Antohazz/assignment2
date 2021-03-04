@@ -4,9 +4,6 @@ import java.util.Date;
 
 public class CDAccount extends BankAccount{
 	
-	private double balance;
-	private CDOffering offering;
-			
 	public CDAccount(CDOffering offering, double balance) {
 		this.offering = offering;
 		this.balance = balance;

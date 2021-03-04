@@ -12,7 +12,8 @@ public class MeritAmericaBankApp {
     	CDOfferings[2] = new CDOffering(3,2.0/100);
     	CDOfferings[3] = new CDOffering(5,2.5/100);
     	CDOfferings[4] = new CDOffering(10,2.2/100);
-		
+    	
+    	MeritBank.setCDOfferings(CDOfferings);
 		
 		/* Instantiates an account holder
 		with a checking balance of $100 and a savings balance of $1000*/

@@ -1,6 +1,6 @@
 package com.meritamerica.assignment2;
 
-public class CDOffering{
+public class CDOffering {
 
 	private double interestRate;
 	private int term;
@@ -10,6 +10,7 @@ public class CDOffering{
 		this.term = term;
 		this.interestRate = interestRate;
 		this.balance = 0;
+
 	}
 	
 	

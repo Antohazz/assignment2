@@ -1,7 +1,7 @@
 package com.meritamerica.assignment2;
 
 import java.util.Arrays;
-import java.util.Random;
+
 
 public class MeritBank {
 	
@@ -36,6 +36,7 @@ public class MeritBank {
 			if((double)futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm()) > val) {
 				val = (double)futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm());
 				j = i;
+				
 			}
 		
 		}

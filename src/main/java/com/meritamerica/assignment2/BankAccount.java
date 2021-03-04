@@ -2,15 +2,21 @@ package com.meritamerica.assignment2;
 
 public class BankAccount {
 	
-	private double interestRate;
-	private long accountNumber;
-	private double balance;
+	protected double interestRate;
+	protected long accountNumber;
+	protected double balance;
+	protected CDOffering offering;
 	
 	public BankAccount() {
 		
 	}
 	
 	public BankAccount(double balance) {
+		this.balance = balance;
+	}
+	
+	public BankAccount(CDOffering offering, double balance) {
+		this.offering = offering;
 		this.balance = balance;
 	}
 	
