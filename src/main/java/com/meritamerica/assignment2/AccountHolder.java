@@ -99,8 +99,9 @@ public class AccountHolder {
 
 	protected CheckingAccount addCheckingAccount(double openingBalance) {
 		if (getCheckingBalance() + getSavingsBalance() + openingBalance < 250000) {
+			
 			CheckingAccount checkingAccount = new CheckingAccount(openingBalance);
-
+			
 			CheckingAccount[] temp = new CheckingAccount[checkArray.length + 1];
 			for (int i = 0; i < checkArray.length; i++) {
 				temp[i] = checkArray[i];
@@ -109,13 +110,14 @@ public class AccountHolder {
 			checkArray[checkArray.length - 1] = checkingAccount;
 
 			return checkArray[checkArray.length - 1];
-
+			
 		} else
 			return null;
 	}
 
 	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
 		if (getCheckingBalance() + getSavingsBalance() < 250000) {
+			
 			CheckingAccount[] temp = new CheckingAccount[checkArray.length + 1];
 			for (int i = 0; i < checkArray.length; i++) {
 				temp[i] = checkArray[i];
@@ -226,7 +228,7 @@ public class AccountHolder {
 	}
 
 	protected double getCombinedBalance() {
-		return /*getCDBalance() +*/ getSavingsBalance() + getCheckingBalance();
+		return getCDBalance() + getSavingsBalance() + getCheckingBalance();
 	}
 
 	// OUTPUT

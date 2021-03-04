@@ -26,6 +26,7 @@ public class MeritAmericaBankApp {
 		ah1.addCheckingAccount(5000);
 		ah1.addSavingsAccount(50000);
 		
+		
 		System.out.println(ah1.getNumberOfCheckingAccounts());
 		System.out.println(ah1.getNumberOfSavingsAccounts());
 		System.out.println(ah1.getCheckingBalance());
