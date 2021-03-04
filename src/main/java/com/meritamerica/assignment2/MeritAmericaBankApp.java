@@ -61,12 +61,17 @@ public class MeritAmericaBankApp {
 		AccountHolder ah3 = new AccountHolder("Dick", "Herbert", "Herring", "555-55-5555");
 		
 		//Add the second best CD offering as a CD account on ah3
+		MeritBank.getSecondBestCDOffering(ah2.getCombinedBalance());
 		
 		//Confirm a CD account was not created on ah3
-		
+		ah3.getCDAccounts();
 		//Add a checking account with an opening balance of $1,000 as well as a savings account with an opening balance of $10,000 to ah3
+		
 		//Add ah3 to Merit Bank’s list of account holders
+		MeritBank.addAccountHolder(ah3);
+		
 		//Get the total balance of all accounts held by Merit Bank’s account holders
+		MeritBank.totalBalances();
 		
 	}
 }
