@@ -10,7 +10,7 @@ public class MeritBank {
 	private static CDOffering[] cdOfferings = new CDOffering[5];
 	private static CDOffering offering;
 	
-	static void addAccountHolder(AccountHolder accountHolder) {
+	public static void addAccountHolder(AccountHolder accountHolder) {
 		AccountHolder[] temp = new AccountHolder[accountHolders.length + 1];
 				for (int i = 0; i < accountHolders.length; i++) {
 					temp[i] = accountHolders[i];
@@ -19,16 +19,16 @@ public class MeritBank {
 		accountHolders[accountHolders.length - 1] = accountHolder;
 	}
 	
-	static AccountHolder[] getAccountHolders() {
+	public static AccountHolder[] getAccountHolders() {
 		return accountHolders;
 	}
 	
-	static CDOffering[] getCDOfferings() {
+	public static CDOffering[] getCDOfferings() {
 		return cdOfferings;
 	}
 
 
-	static CDOffering getBestCDOffering(double depositAmount) {
+	public static CDOffering getBestCDOffering(double depositAmount) {
 		double val = 0.0;
 		int j = 0;
 		for (int i = 0; i < cdOfferings.length; i++) {
@@ -41,62 +41,48 @@ public class MeritBank {
 		return cdOfferings[j];
 	}
 
-	static CDOffering getSecondBestCDOffering(double depositAmount) {
+	public static CDOffering getSecondBestCDOffering(double depositAmount) {
 		double val = 0.0;
 		int j = 0;
+		int k = 0;
 		for (int i = 0; i < cdOfferings.length; i++) {
 			if(futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm()) > val) {
 				val = futureValue(depositAmount, cdOfferings[i].getInterestRate(), cdOfferings[i].getTerm());
 				j = i;
-			}
-		
-		}
-		CDOffering[] temp = new CDOffering[cdOfferings.length];
-		for (int i = 0; i < cdOfferings.length; i++) {
-			temp[i] = cdOfferings[i];
-		}
-		
-		temp[j] = null;
-		
-		val = 0.0;
-		j = 0;
-		for (int i = 0; i < temp.length; i++) {
-			if(futureValue(depositAmount, temp[i].getInterestRate(), temp[i].getTerm()) > val) {
-				val = futureValue(depositAmount, temp[i].getInterestRate(), temp[i].getTerm());
-				j = i;
+				k = j;
 			}
 		
 		}
 		
-		return cdOfferings[j];
+		return cdOfferings[k];
 	}
 	
-	static void clearCDOfferings() {
+	public static void clearCDOfferings() {
 //		for (int i = 0; i < cdOfferings.length; i++) {
 //			cdOfferings[i] = null;	
 //		}
 		cdOfferings = null;
 	}
 	
-	static void setCDOfferings(CDOffering[] offerings) {
+	public static void setCDOfferings(CDOffering[] offerings) {
 		cdOfferings = offerings;
 	}
 	
-	static long getNextAccountNumber() {
+	public static long getNextAccountNumber() {
 		return accountNumber+1;
 	}
 	
-	static double totalBalances() {
+	public static double totalBalances() {
 		double total = 0.0;
 		for (int i = 0; i < accountHolders.length; i++) {
-			total += accountHolders[i].getCheckingAccount().getBalance();
-			total += accountHolders[i].getSavingsAccount().getBalance();
+			total += accountHolders[i].getCombinedBalance();
+			
 		}
 		
 		return total;
 	}
 	
-	static double futureValue(double presentValue, double interestRate, int term) {
+	public static double futureValue(double presentValue, double interestRate, int term) {
 		double futureValue = presentValue * Math.pow(1 + interestRate, term);
 		return futureValue;
 	}

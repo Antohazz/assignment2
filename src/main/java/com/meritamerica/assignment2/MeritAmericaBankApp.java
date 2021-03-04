@@ -26,12 +26,30 @@ public class MeritAmericaBankApp {
 		ah1.addCheckingAccount(5000);
 		ah1.addSavingsAccount(50000);
 		
+		System.out.println(ah1.getNumberOfCheckingAccounts());
+		System.out.println(ah1.getNumberOfSavingsAccounts());
+		System.out.println(ah1.getCheckingBalance());
+		System.out.println(ah1.getSavingsBalance());
+		System.out.println(ah1.getCombinedBalance());
 		
 		//Add the best CD offering as a CD account on ah1
+		MeritBank.getBestCDOffering(ah1.getCombinedBalance());
+		
 		//Add ah1 to Merit Bank’s list of account holders
+		MeritBank.addAccountHolder(ah1);
+		
+		
+		
 		//Instantiate a new AccountHolder (ah2)
+		AccountHolder ah2 = new AccountHolder("Major", "Major", "Major", "777-77-7777");
+		
 		//Add a checking account with an opening balance of $1,000 as well as a savings account with an opening balance of $10,000 to ah2
+		ah1.addCheckingAccount(1000);
+		ah1.addSavingsAccount(10000);
+		
 		//Add the second best CD offering as a CD account on ah2
+		MeritBank.getSecondBestCDOffering(ah2.getCombinedBalance());
+		
 		//Add ah2 to Merit Bank’s list of account holders
 		//Clear the CDs being offered by MeritBank
 		//Instantiate a new AccountHolder (ah3)

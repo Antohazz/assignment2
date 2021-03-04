@@ -10,6 +10,10 @@ public class BankAccount {
 		
 	}
 	
+	public BankAccount(double balance) {
+		this.balance = balance;
+	}
+	
 	public BankAccount(double balance, double interestRate) {
 		this.balance = balance;
 		this.interestRate = interestRate;
