@@ -211,12 +211,14 @@ public class AccountHolder {
 	}
 
 	protected CDAccount addCDAccount(CDAccount cdAccount) {
+		
 		CDAccount[] temp = new CDAccount[cdArray.length + 1];
 		for (int i = 0; i < cdArray.length; i++) {
 			temp[i] = cdArray[i];
 		}
 		cdArray = temp;
 		cdArray[cdArray.length - 1] = cdAccount;
+
 		return cdArray[cdArray.length - 1];
 	}
 

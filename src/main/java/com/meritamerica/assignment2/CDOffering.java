@@ -9,7 +9,6 @@ public class CDOffering {
 	public CDOffering(int term, double interestRate) {
 		this.term = term;
 		this.interestRate = interestRate;
-		this.balance = 0;
 
 	}
 	
@@ -19,10 +18,7 @@ public class CDOffering {
 	}
 	
 	
-	public double getBalance() {
-		return balance;
-	}
-	
+
 	public double getInterestRate() {
 		return interestRate;
 	}

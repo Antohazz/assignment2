@@ -52,8 +52,13 @@ public class MeritAmericaBankApp {
 		System.out.println(ah1.getCombinedBalance());
 		
 		System.out.println(ah1.getCheckingAccounts()[2].getAccountNumber());
-		
-		
+//		System.out.println(MeritBank.accountHolders[0].getCDAccounts()[0] != null);
+		//Add the best CD offering as a CD account on ah1
+		MeritBank.getBestCDOffering(ah1.getCombinedBalance());
+		//Add ah1 to Merit Bank’s list of account holders
+		MeritBank.addAccountHolder(ah1);
+
+				
 		//Instantiate a new AccountHolder (ah2)
 		AccountHolder ah2 = new AccountHolder("Major", "Major", "Major", "777-77-7777");
 		

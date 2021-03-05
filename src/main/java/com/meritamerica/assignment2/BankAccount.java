@@ -32,7 +32,7 @@ public class BankAccount {
 		this.accountNumber = accountNumber;
 		this.balance = balance;
 		this.interestRate = interestRate;
-		this.accountNumber = MeritBank.getNextAccountNumber();
+		this.accountNumber = accountNumber;
 	}
 	
 	public long getAccountNumber() {
