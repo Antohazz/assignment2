@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class MeritBank {
 	
-	public static long accountNumber = 0;
+	public static long accountNumber = 1;
 	public static AccountHolder[] accountHolders = new AccountHolder[0];
 	public static CDOffering[] cdOfferings = new CDOffering[0];
 	public static CDOffering offering;
@@ -78,7 +78,7 @@ public class MeritBank {
 	}
 	
 	public static long getNextAccountNumber() {
-		return accountNumber+1;
+		return accountNumber++;
 	}
 	
 	public static double totalBalances() {

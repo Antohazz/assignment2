@@ -110,13 +110,13 @@ public class AccountHolder {
 			checkArray[checkArray.length - 1] = checkingAccount;
 
 			return checkArray[checkArray.length - 1];
-			
+//			return checkingAccount;
 		} else
 			return null;
 	}
 
 	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		if (getCheckingBalance() + getSavingsBalance() < 250000) {
+		if (getCheckingBalance() + getSavingsBalance() + checkingAccount.getBalance() < 250000) {
 			
 			CheckingAccount[] temp = new CheckingAccount[checkArray.length + 1];
 			for (int i = 0; i < checkArray.length; i++) {
@@ -159,12 +159,14 @@ public class AccountHolder {
 			saveArray[saveArray.length - 1] = savingsAccount;
 
 			return saveArray[saveArray.length - 1];
+			//return savingsAccount;
 		} else
 			return null;
+			
 	}
 
 	protected SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		if (getCheckingBalance() + getSavingsBalance() < 250000) {
+		if (getCheckingBalance() + getSavingsBalance() + savingsAccount.getBalance() < 250000) {
 			SavingsAccount[] temp = new SavingsAccount[saveArray.length + 1];
 			for (int i = 0; i < saveArray.length; i++) {
 				temp[i] = saveArray[i];
@@ -197,7 +199,15 @@ public class AccountHolder {
 
 	protected CDAccount addCDAccount(CDOffering offering, double openingBalance) {
 		CDAccount cdAccount = new CDAccount(offering, openingBalance);
-		return cdAccount;
+		CDAccount[] temp = new CDAccount[cdArray.length + 1];
+			for (int i = 0; i < cdArray.length; i++) {
+				temp[i] = cdArray[i];
+			}
+			cdArray = temp;
+			cdArray[cdArray.length - 1] = cdAccount;
+
+			return cdArray[cdArray.length - 1];
+		//return cdAccount;
 	}
 
 	protected CDAccount addCDAccount(CDAccount cdAccount) {
@@ -207,7 +217,6 @@ public class AccountHolder {
 		}
 		cdArray = temp;
 		cdArray[cdArray.length - 1] = cdAccount;
-
 		return cdArray[cdArray.length - 1];
 	}
 

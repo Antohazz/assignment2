@@ -51,7 +51,7 @@ public class MeritAmericaBankApp {
 		System.out.println(ah1.getSavingsBalance());
 		System.out.println(ah1.getCombinedBalance());
 		
-		
+		System.out.println(ah1.getCheckingAccounts()[2].getAccountNumber());
 		
 		
 		//Instantiate a new AccountHolder (ah2)
