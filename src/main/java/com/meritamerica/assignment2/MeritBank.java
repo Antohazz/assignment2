@@ -40,9 +40,6 @@ public class MeritBank {
 			}
 		
 		}
-//		CDOffering offering = new CDOffering(cdOfferings[j].getTerm(), cdOfferings[j].getInterestRate());
-//		System.out.println("Got here");
-//		return offering;
 		return cdOfferings[j];
 		}else return null;
 	}
@@ -66,9 +63,7 @@ public class MeritBank {
 	}
 	
 	public static void clearCDOfferings() {
-//		for (int i = 0; i < cdOfferings.length; i++) {
-//			cdOfferings[i] = null;	
-//		}
+
 		cdOfferings = null;
 	}
 	

@@ -15,9 +15,10 @@ public class AccountHolder {
 	private String ssn;
 	private CheckingAccount checkingAccount;
 	private SavingsAccount savingsAccount;
-	private CheckingAccount[] checkArray = new CheckingAccount[0];
-	private SavingsAccount[] saveArray = new SavingsAccount[0];
+	private CheckingAccount[] checkArray = new CheckingAccount[10];
+	private SavingsAccount[] saveArray = new SavingsAccount[10];
 	private CDAccount[] cdArray = new CDAccount[0];
+	private final int MAXV = 250000;
 
 	// Constructors
 
@@ -87,45 +88,27 @@ public class AccountHolder {
 		return ssn;
 	}
 
-	// Accounts getters
 
-//	protected CheckingAccount getCheckingAccount() {
-//		return checkingAccount; 
-//	}
-//		
-//	protected SavingsAccount getSavingsAccount() {
-//		return savingsAccount; 
-//	}
-
+	
+	
 	protected CheckingAccount addCheckingAccount(double openingBalance) {
-		if (getCheckingBalance() + getSavingsBalance() + openingBalance < 250000) {
 			
 			CheckingAccount checkingAccount = new CheckingAccount(openingBalance);
 			
-			CheckingAccount[] temp = new CheckingAccount[checkArray.length + 1];
-			for (int i = 0; i < checkArray.length; i++) {
-				temp[i] = checkArray[i];
-			}
-			checkArray = temp;
-			checkArray[checkArray.length - 1] = checkingAccount;
-
-			return checkArray[checkArray.length - 1];
-//			return checkingAccount;
-		} else
-			return null;
+			return addCheckingAccount(checkingAccount);
+		 
 	}
 
 	protected CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
-		if (getCheckingBalance() + getSavingsBalance() + checkingAccount.getBalance() < 250000) {
+		if (getCheckingBalance() + getSavingsBalance() + checkingAccount.getBalance() < MAXV) {
 			
-			CheckingAccount[] temp = new CheckingAccount[checkArray.length + 1];
 			for (int i = 0; i < checkArray.length; i++) {
-				temp[i] = checkArray[i];
+				if (checkArray[i] == null) {
+					checkArray[i] = checkingAccount;
+					break;
+				}
 			}
-			checkArray = temp;
-			checkArray[checkArray.length - 1] = checkingAccount;
-
-			return checkArray[checkArray.length - 1];
+			return checkingAccount;
 		} else
 			return null;
 	}
@@ -139,42 +122,41 @@ public class AccountHolder {
 	}
 
 	protected double getCheckingBalance() {
-		if(checkArray != null) {
 		double chBalance = 0.0;
 		for (int i = 0; i < checkArray.length; i++) {
+			if (checkArray[i] != null)
 			chBalance += checkArray[i].getBalance();
+			else break;
 		}
 		return chBalance;
-		}else return 0;
 	}
 
+	
+	
+	
+	
+	
+	
 	protected SavingsAccount addSavingsAccount(double openingBalance) {
-		if (getCheckingBalance() + getSavingsBalance() + openingBalance < 250000) {
+			
 			SavingsAccount savingsAccount = new SavingsAccount(openingBalance);
-			SavingsAccount[] temp = new SavingsAccount[saveArray.length + 1];
-			for (int i = 0; i < saveArray.length; i++) {
-				temp[i] = saveArray[i];
-			}
-			saveArray = temp;
-			saveArray[saveArray.length - 1] = savingsAccount;
 
-			return saveArray[saveArray.length - 1];
-			//return savingsAccount;
-		} else
-			return null;
+			return addSavingsAccount(savingsAccount);
+		 
 			
 	}
 
 	protected SavingsAccount addSavingsAccount(SavingsAccount savingsAccount) {
-		if (getCheckingBalance() + getSavingsBalance() + savingsAccount.getBalance() < 250000) {
-			SavingsAccount[] temp = new SavingsAccount[saveArray.length + 1];
+		if (getCheckingBalance() + getSavingsBalance() + savingsAccount.getBalance() < MAXV) {
+		
 			for (int i = 0; i < saveArray.length; i++) {
-				temp[i] = saveArray[i];
+				if (saveArray[i] == null) {
+					saveArray[i] = savingsAccount;
+					break;
+				}
 			}
-			saveArray = temp;
-			saveArray[saveArray.length - 1] = savingsAccount;
-
-			return saveArray[saveArray.length - 1];
+		
+			return savingsAccount;
 		} else
 			return null;
 	}
@@ -188,26 +170,22 @@ public class AccountHolder {
 	}
 
 	protected double getSavingsBalance() {
-		if (saveArray != null) {
 		double svBalance = 0.0;
 		for (int i = 0; i < saveArray.length; i++) {
+			if (saveArray[i] != null)
 			svBalance += saveArray[i].getBalance();
+			else break;
 		}
 		return svBalance;
-		}else return 0;
 	}
 
+	
+	
+	
+	
 	protected CDAccount addCDAccount(CDOffering offering, double openingBalance) {
 		CDAccount cdAccount = new CDAccount(offering, openingBalance);
-		CDAccount[] temp = new CDAccount[cdArray.length + 1];
-			for (int i = 0; i < cdArray.length; i++) {
-				temp[i] = cdArray[i];
-			}
-			cdArray = temp;
-			cdArray[cdArray.length - 1] = cdAccount;
-
-			return cdArray[cdArray.length - 1];
-		//return cdAccount;
+		return addCDAccount(cdAccount);
 	}
 
 	protected CDAccount addCDAccount(CDAccount cdAccount) {
@@ -231,17 +209,17 @@ public class AccountHolder {
 	}
 
 	protected double getCDBalance() {
-		if (cdArray != null) {
 			double cdBalance = 0.0;
 			for (int i = 0; i < cdArray.length; i++) {
+				if (cdArray[i] != null)
 				cdBalance += cdArray[i].getBalance();
+				else break;
 			}
 			return cdBalance;
-		} else
-			return 0;
-
 	}
 
+	
+	
 	protected double getCombinedBalance() {
 		return getCDBalance() + getSavingsBalance() + getCheckingBalance();
 	}

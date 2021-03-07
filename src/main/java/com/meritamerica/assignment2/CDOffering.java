@@ -4,7 +4,7 @@ public class CDOffering {
 
 	private double interestRate;
 	private int term;
-	private int balance;
+
 
 	public CDOffering(int term, double interestRate) {
 		this.term = term;
