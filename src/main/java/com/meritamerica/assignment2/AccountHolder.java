@@ -15,9 +15,9 @@ public class AccountHolder {
 	private String ssn;
 	private CheckingAccount checkingAccount;
 	private SavingsAccount savingsAccount;
-	private CheckingAccount[] checkArray = new CheckingAccount[10];
-	private SavingsAccount[] saveArray = new SavingsAccount[10];
-	private CDAccount[] cdArray = new CDAccount[0];
+	private CheckingAccount[] checkArray = new CheckingAccount[1];
+	private SavingsAccount[] saveArray = new SavingsAccount[1];
+	private CDAccount[] cdArray = new CDAccount[1];
 	private final int MAXV = 250000;
 
 	// Constructors
@@ -105,6 +105,16 @@ public class AccountHolder {
 			for (int i = 0; i < checkArray.length; i++) {
 				if (checkArray[i] == null) {
 					checkArray[i] = checkingAccount;
+					
+					//Extending Array if full
+					if(i == checkArray.length - 1) {
+						CheckingAccount[] temp = new CheckingAccount[checkArray.length * 2];
+						for (int j = 0; j < checkArray.length; j++) {
+							temp[j] = checkArray[j];
+						}
+						checkArray = temp;		
+					}
+					
 					break;
 				}
 			}
@@ -152,6 +162,18 @@ public class AccountHolder {
 			for (int i = 0; i < saveArray.length; i++) {
 				if (saveArray[i] == null) {
 					saveArray[i] = savingsAccount;
+					
+					
+					//Extending Array if full
+					if(i == saveArray.length - 1) {
+						SavingsAccount[] temp = new SavingsAccount[saveArray.length * 2];
+						for (int j = 0; j < saveArray.length; j++) {
+							temp[j] = saveArray[j];
+						}
+						saveArray = temp;		
+					}
+					
+					
 					break;
 				}
 			}
@@ -190,14 +212,26 @@ public class AccountHolder {
 
 	protected CDAccount addCDAccount(CDAccount cdAccount) {
 		
-		CDAccount[] temp = new CDAccount[cdArray.length + 1];
 		for (int i = 0; i < cdArray.length; i++) {
-			temp[i] = cdArray[i];
+			if (cdArray[i] == null) {
+				cdArray[i] = cdAccount;
+				
+				
+				//Extending Array if full
+				if(i == cdArray.length - 1) {
+					CDAccount[] temp = new CDAccount[cdArray.length * 2];
+					for (int j = 0; j < cdArray.length; j++) {
+						temp[j] = cdArray[j];
+					}
+					cdArray = temp;		
+				}
+				
+				
+				break;
+			}
 		}
-		cdArray = temp;
-		cdArray[cdArray.length - 1] = cdAccount;
-
-		return cdArray[cdArray.length - 1];
+	
+		return cdAccount;
 	}
 
 	protected CDAccount[] getCDAccounts() {

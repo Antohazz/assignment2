@@ -6,17 +6,30 @@ import java.util.Arrays;
 public class MeritBank {
 	
 	public static long accountNumber = 1;
-	public static AccountHolder[] accountHolders = new AccountHolder[0];
+	public static AccountHolder[] accountHolders = new AccountHolder[1];
 	public static CDOffering[] cdOfferings = new CDOffering[0];
 	public static CDOffering offering;
 	
 	public static void addAccountHolder(AccountHolder accountHolder) {
-		AccountHolder[] temp = new AccountHolder[accountHolders.length + 1];
-				for (int i = 0; i < accountHolders.length; i++) {
-					temp[i] = accountHolders[i];
+
+		
+		for (int i = 0; i < accountHolders.length; i++) {
+			if (accountHolders[i] == null) {
+				accountHolders[i] = accountHolder;
+				
+				//Extending Array if full
+				if(i == accountHolders.length - 1) {
+					AccountHolder[] temp = new AccountHolder[accountHolders.length * 2];
+					for (int j = 0; j < accountHolders.length; j++) {
+						temp[j] = accountHolders[j];
+					}
+					accountHolders = temp;		
 				}
-		accountHolders = temp;		
-		accountHolders[accountHolders.length - 1] = accountHolder;
+								
+				break;
+			}
+		}
+
 	}
 	
 	public static AccountHolder[] getAccountHolders() {
@@ -79,8 +92,9 @@ public class MeritBank {
 	public static double totalBalances() {
 		double total = 0.0;
 		for (int i = 0; i < accountHolders.length; i++) {
+			if (accountHolders[i] != null)
 			total += accountHolders[i].getCombinedBalance();
-			
+			else break;
 		}
 		
 		return total;
