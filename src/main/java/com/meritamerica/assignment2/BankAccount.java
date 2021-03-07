@@ -68,7 +68,7 @@ public class BankAccount {
 	}
 	
 	public double futureValue(int years) {
-		double futureBalance = balance * Math.pow(1 + getInterestRate(), years);
+		double futureBalance = getBalance() * Math.pow(1 + getInterestRate(), years);
 		return futureBalance;
 	}
 
